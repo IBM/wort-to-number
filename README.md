@@ -27,4 +27,4 @@ console.log(wordToNumber("eintausenddreihundertsiebenunddreißig"));
 
 # License
 
-MIT
+[MIT](https://tldrlegal.com/license/mit-license)
