@@ -28,3 +28,8 @@ console.log(wordToNumber("eintausenddreihundertsiebenunddreißig"));
 # License
 
 [MIT](https://tldrlegal.com/license/mit-license)
+
+## Open Source @ IBM
+
+Find more open source projects on the
+[IBM Github Page](http://ibm.github.io/).
