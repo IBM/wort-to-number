@@ -25,8 +25,11 @@ const numberDictionary = {
   hundert: "100",
   einhundert: "100",
   tausend: "1000",
-  eintausend: "1000"
+  eintausend: "1000"//,
+  //million: "1000000"
 };
+
+var maxMagnitudeOrder = 4;// 7  
 
 function flatMap(array) {
   let a = [];
@@ -88,6 +91,50 @@ function mapWordToNumber(word) {
   return sumNumbers(array);
 }
 
+function mapNumberToWord(number) {
+  number = cleanNumber(number);
+  var dictionary = Object.entries(numberDictionary).sort((el, el1) => el[1] > el1[1]);
+
+  if (dictionary.find(el => el[1] == number)) {
+    return dictionary.find(el => el[1] == number)[0];
+  }
+
+  var charArrayNumber = number.toString();
+  var magnitudeOrder = charArrayNumber.length;
+  var magnitudeBase = Math.pow(10, magnitudeOrder - 1);
+  var diffMagnitudes = magnitudeOrder - maxMagnitudeOrder;
+
+  if ([1, 2].indexOf(diffMagnitudes) != -1) {
+    return mapNumberToWord(charArrayNumber.substr(0, diffMagnitudes + 1)) + 'tausend' +
+      mapNumberToWord(charArrayNumber.substr(diffMagnitudes + 1));
+
+  } else if (diffMagnitudes > 2) {
+
+    return "Entschuldigung, wir konvertieren immer noch nicht so große Zahlen";
+
+  } else if (magnitudeOrder == 2) {
+
+    return dictionary.find(el => el[1] == charArrayNumber[1])[0] +
+      ((number > 20) ? 'und' : '')
+      + dictionary.find(el => el[1] == (charArrayNumber[0] * magnitudeBase))[0];
+
+  } else {
+
+    var firstPart = (charArrayNumber[0] == 1) ? '' : dictionary.find(el => el[1] == charArrayNumber[0])[0];
+
+    var secondPart = dictionary.find(el => el[1] == magnitudeBase &&
+      ((charArrayNumber[0] == 1 && [3, 4].indexOf(magnitudeOrder) != -1)
+        ? el[0].startsWith('ein') : true)
+    )[0];
+
+    return firstPart + secondPart + 'und' + mapNumberToWord(charArrayNumber.substr(1));
+  }
+}
+
+function cleanNumber(number) {
+  return Number(number);
+}
+
 function sumNumbers(array) {
   return array
     .reduce((total, current) => {
@@ -106,6 +153,8 @@ function sumNumbers(array) {
 module.exports = str => {
   if (!str) {
     return str;
+  } else if (!isNaN(str)) {
+    return mapNumberToWord(str);
   }
 
   let a = [str];

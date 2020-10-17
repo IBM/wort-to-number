@@ -2,6 +2,8 @@
 
 > Transforms numbers written as words (in German language) into numbers
 
+> Now it also does the reverse transformation (numbers into german words)
+
 > Umwandlung von Zahlen als Wörter in Zahlen
 
 > Example: "Mario ist dreiunddreißig Jahre alt" -> "Mario ist 33 Jahre alt"
@@ -19,10 +21,14 @@ npm install word-to-number --save
 # Usage
 
 ```javascript
-const wordToNumber = require("word-to-number");
+const convertionOfNumber = require("word-to-number");
 
-console.log(wordToNumber("eintausenddreihundertsiebenunddreißig"));
+console.log(convertionOfNumber("eintausenddreihundertsiebenunddreißig"));
 // "1337"
+
+console.log(convertionOfNumber("999999"));
+// 
+
 ```
 
 # License
