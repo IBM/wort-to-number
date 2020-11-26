@@ -20,7 +20,7 @@ const numberDictionary = {
   fünfzig: "50",
   sechzig: "60",
   siebzig: "70",
-  achzig: "80",
+  achtzig: "80",
   neunzig: "90",
   hundert: "100",
   einhundert: "100",
