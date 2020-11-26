@@ -60,7 +60,7 @@ describe("Word to Number", () => {
       ["siebenundfünfzig", "57"],
       ["achtundsechzig", "68"],
       ["neunundsiebzig", "79"],
-      ["dreiundachzig", "83"],
+      ["dreiundachtzig", "83"],
       ["neunundneunzig", "99"]
     ].forEach(([text, num]) => {
       it(`should return ${num} when ${text} is passed`, () => {
@@ -98,7 +98,7 @@ describe("Word to Number", () => {
 
       ["achttausendvierunddreißig", "8034"],
 
-      ["siebentausendeinhundertzweiundachzig", "7182"],
+      ["siebentausendeinhundertzweiundachtzig", "7182"],
       ["neuntausendvierhundertdreizehn", "9413"],
       ["zehntausend", "10000"],
       ["fünfzehntausendsieben", "15007"],
@@ -154,8 +154,8 @@ describe("Word to Number", () => {
       expect(wordToNumber("drei.acht.fünf")).toEqual("3.8.5");
     });
 
-    it("should return '13.85 2, 7' when string with special character 'dreizehn.fünfundachzig zwei, sieben' is passed", () => {
-      expect(wordToNumber("dreizehn.fünfundachzig zwei, sieben")).toEqual(
+    it("should return '13.85 2, 7' when string with special character 'dreizehn.fünfundachtzig zwei, sieben' is passed", () => {
+      expect(wordToNumber("dreizehn.fünfundachtzig zwei, sieben")).toEqual(
         "13.85 2, 7"
       );
     });
