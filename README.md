@@ -13,7 +13,7 @@
 # Install
 
 ```
-npm install word-to-number --save
+npm install wort-to-number --save
 ```
 
 # Usage
