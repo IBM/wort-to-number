@@ -23,6 +23,7 @@ describe("Word to Number", () => {
       ["null", "0"],
       ["eins", "1"],
       ["zwei", "2"],
+      ["zwo", "2"],
       ["drei", "3"],
       ["vier", "4"],
       ["fünf", "5"],
