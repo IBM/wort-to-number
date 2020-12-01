@@ -19,7 +19,7 @@ npm install wort-to-number --save
 # Usage
 
 ```javascript
-const wordToNumber = require("word-to-number");
+const wordToNumber = require("wort-to-number");
 
 console.log(wordToNumber("eintausenddreihundertsiebenunddreißig"));
 // "1337"
