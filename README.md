@@ -9,6 +9,7 @@
 - Developed for Watson Speech to Text
 - For now covers 0 to 999999
 - Converts only matching numbers, rest of the string will be preserved
+- also supports zip codes (e.g. "achtzig dreissig fünf München" -> "80305 München")
 
 # Install
 

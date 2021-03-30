@@ -111,6 +111,7 @@ module.exports = str => {
   }
 
   let a = [str];
+  
   [" ", ",", "."].forEach(separator => {
     a = flatMap(
       a.map(e => {
@@ -119,5 +120,14 @@ module.exports = str => {
     );
   });
 
-  return a.map(mapWordToNumber).join("");
+  //check for zip codes
+  const paragraph = a.map(mapWordToNumber).join("");
+  const regex = /(\d\s?\d\s?\d\s?\d\s?\d)/g;
+  const found = paragraph.match(regex);
+
+  if(found && found.length && found.length > 0){
+    return paragraph.replace(found[0], found[0].replace(/\s/g,''));
+  }
+
+  return paragraph;
 };

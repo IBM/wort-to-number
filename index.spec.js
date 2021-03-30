@@ -162,4 +162,35 @@ describe("Word to Number", () => {
       );
     });
   });
+
+  describe("address strings", () => {
+    it('should return standalone postal code wit single digits, without white spaces', () => {
+      expect(wordToNumber("acht null neun neun zwei")).toEqual("80992");
+    })
+
+    it('should return standalone postal code with multi-digits, without white spaces', () => {
+      expect(wordToNumber("achtzig neunundneunzig zwei")).toEqual("80992");
+    })
+
+    it('should return postal code with city name without white spaces', () => {
+      expect(wordToNumber("acht null neun neun zwei München")).toEqual("80992 München");
+    })
+
+    it('should return postal code with noise without white spaces', () => {
+      expect(wordToNumber("Das ist die acht null neun neun zwei München")).toEqual("Das ist die 80992 München");
+    })
+
+    describe('should return whole adress', () => {[
+      ["Poststraße fünf, eins zwei drei vier fünf München", "Poststraße 5, 12345 München"],
+      ["Poststraße zwanzig, achtzig zwo dreißig München", "Poststraße 20, 80230 München"],
+      ["Poststraße einhundertzehn, achtzig dreissig fünf München", "Poststraße 110, 80305 München"],
+      ["Dachauer str. achtzehn in acht null neun neun zwei München", "Dachauer str. 18 in 80992 München"],
+      ["Dachauer str. einhundertundeins in acht null drei drei acht", "Dachauer str. 101 in 80338"],
+      ["In der Nymphenburger Straße achtzehn.", "In der Nymphenburger Straße 18."]].forEach(([text,res]) => {
+        it(`should return ${res} when ${text} is passed`, () => {
+          expect(wordToNumber(text)).toEqual(res);
+        });
+      });
+    })
+  })
 });
