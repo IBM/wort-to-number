@@ -17,6 +17,7 @@ const numberDictionary = {
   siebzehn: "17",
   zwanzig: "20",
   dreißig: "30",
+  dreissig: "30",
   vierzig: "40",
   fünfzig: "50",
   sechzig: "60",

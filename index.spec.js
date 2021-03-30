@@ -56,6 +56,7 @@ describe("Word to Number", () => {
       ["zweiundzwanzig", "22"],
       ["dreiundzwanzig", "23"],
       ["vierundzwanzig", "24"],
+      ["einunddreissig", "31"],
       ["dreiunddreißig", "33"],
       ["fünfundvierzig", "45"],
       ["siebenundfünfzig", "57"],
