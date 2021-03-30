@@ -120,10 +120,19 @@ module.exports = str => {
     );
   });
 
-  //check for zip codes
   const paragraph = a.map(mapWordToNumber).join("");
-  const regex = /(\d\s?\d\s?\d\s?\d\s?\d)/g;
-  const found = paragraph.match(regex);
+
+  // check for tax id
+  let regex = /(\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d)/g;
+  let found = paragraph.match(regex);
+
+  if(found && found.length && found.length > 0){
+    return paragraph.replace(found[0], found[0].replace(/\s/g,''));
+  }
+
+  //check for zip codes
+  regex = /(\d\s?\d\s?\d\s?\d\s?\d)/g;
+  found = paragraph.match(regex);
 
   if(found && found.length && found.length > 0){
     return paragraph.replace(found[0], found[0].replace(/\s/g,''));

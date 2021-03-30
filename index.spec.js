@@ -193,4 +193,18 @@ describe("Word to Number", () => {
       });
     })
   })
+
+  describe("tax id string", () => {
+    it('should return single digits as tax id', () => {
+      expect(wordToNumber("eins zwei drei vier fünf sechs sieben acht neun eins zwei")).toEqual("12345678912");
+    })
+
+    it('should return multi numbers as tax id', () => {
+      expect(wordToNumber("fünf dreiundzwanzig vier fünf sechsundsechzig acht neun eins eins")).toEqual("52345668911");
+    })
+
+    it('should return multi numbers as tax id and preserve other text', () => {
+      expect(wordToNumber("Das ist die einhundertfünfundfünfzig dreihundertundeins dreihundertzweiunddreißig zwölf")).toEqual("Das ist die 15530133212");
+    })
+  })
 });

@@ -9,7 +9,8 @@
 - Developed for Watson Speech to Text
 - For now covers 0 to 999999
 - Converts only matching numbers, rest of the string will be preserved
-- also supports zip codes (e.g. "achtzig dreissig fünf München" -> "80305 München")
+- supports 5-digit zip codes (e.g. "achtzig dreissig fünf München" -> "80305 München")
+- supports 11-digit tax ids (e.g. "fünf dreiundzwanzig vier fünf sechsundsechzig acht neun eins eins" -> "52345668911")
 
 # Install
 
