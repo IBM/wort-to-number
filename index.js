@@ -105,7 +105,7 @@ function sumNumbers(array) {
     .toString();
 }
 
-module.exports = str => {
+module.exports = (str, smart = false) => {
   if (!str) {
     return str;
   }
@@ -122,20 +122,22 @@ module.exports = str => {
 
   const paragraph = a.map(mapWordToNumber).join("");
 
-  // check for tax id
-  let regex = /(\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d)/g;
-  let found = paragraph.match(regex);
+  if(smart){
+    // check for tax id
+    let regex = /(\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d)/g;
+    let found = paragraph.match(regex);
 
-  if(found && found.length && found.length > 0){
-    return paragraph.replace(found[0], found[0].replace(/\s/g,''));
-  }
+    if(found && found.length && found.length > 0){
+      return paragraph.replace(found[0], found[0].replace(/\s/g,''));
+    }
 
-  //check for zip codes
-  regex = /(\d\s?\d\s?\d\s?\d\s?\d)/g;
-  found = paragraph.match(regex);
+    //check for zip codes
+    regex = /(\d\s?\d\s?\d\s?\d\s?\d)/g;
+    found = paragraph.match(regex);
 
-  if(found && found.length && found.length > 0){
-    return paragraph.replace(found[0], found[0].replace(/\s/g,''));
+    if(found && found.length && found.length > 0){
+      return paragraph.replace(found[0], found[0].replace(/\s/g,''));
+    }
   }
 
   return paragraph;

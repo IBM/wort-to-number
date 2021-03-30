@@ -20,11 +20,35 @@ npm install wort-to-number --save
 
 # Usage
 
+## Standard Usage
+
 ```javascript
 const wordToNumber = require("wort-to-number");
 
 console.log(wordToNumber("eintausenddreihundertsiebenunddreißig"));
 // "1337"
+
+console.log(wordToNumber("acht sieben drei null sechs"));
+// "8 7 3 0 6"
+```
+
+## Smart formatting enabled:
+
+To enable smart formatting, pass in `true` as second parameter
+
+```javascript
+const wordToNumber = require("wort-to-number");
+
+console.log(wordToNumber("acht sieben drei null sechs", true));
+// zip code "87306"
+
+console.log(
+  wordToNumber(
+    "fünf dreiundzwanzig vier fünf sechsundsechzig acht neun eins eins",
+    true
+  )
+);
+// tax id "52345668911"
 ```
 
 # License

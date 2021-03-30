@@ -163,48 +163,50 @@ describe("Word to Number", () => {
     });
   });
 
-  describe("address strings", () => {
-    it('should return standalone postal code wit single digits, without white spaces', () => {
-      expect(wordToNumber("acht null neun neun zwei")).toEqual("80992");
-    })
-
-    it('should return standalone postal code with multi-digits, without white spaces', () => {
-      expect(wordToNumber("achtzig neunundneunzig zwei")).toEqual("80992");
-    })
-
-    it('should return postal code with city name without white spaces', () => {
-      expect(wordToNumber("acht null neun neun zwei München")).toEqual("80992 München");
-    })
-
-    it('should return postal code with noise without white spaces', () => {
-      expect(wordToNumber("Das ist die acht null neun neun zwei München")).toEqual("Das ist die 80992 München");
-    })
-
-    describe('should return whole adress', () => {[
-      ["Poststraße fünf, eins zwei drei vier fünf München", "Poststraße 5, 12345 München"],
-      ["Poststraße zwanzig, achtzig zwo dreißig München", "Poststraße 20, 80230 München"],
-      ["Poststraße einhundertzehn, achtzig dreissig fünf München", "Poststraße 110, 80305 München"],
-      ["Dachauer str. achtzehn in acht null neun neun zwei München", "Dachauer str. 18 in 80992 München"],
-      ["Dachauer str. einhundertundeins in acht null drei drei acht", "Dachauer str. 101 in 80338"],
-      ["In der Nymphenburger Straße achtzehn.", "In der Nymphenburger Straße 18."]].forEach(([text,res]) => {
-        it(`should return ${res} when ${text} is passed`, () => {
-          expect(wordToNumber(text)).toEqual(res);
+  describe("smart formatting", () => {
+    describe("address strings", () => {
+      it('should return standalone postal code wit single digits, without white spaces', () => {
+        expect(wordToNumber("acht null neun neun zwei", true)).toEqual("80992");
+      })
+  
+      it('should return standalone postal code with multi-digits, without white spaces', () => {
+        expect(wordToNumber("achtzig neunundneunzig zwei", true)).toEqual("80992");
+      })
+  
+      it('should return postal code with city name without white spaces', () => {
+        expect(wordToNumber("acht null neun neun zwei München", true)).toEqual("80992 München");
+      })
+  
+      it('should return postal code with noise without white spaces', () => {
+        expect(wordToNumber("Das ist die acht null neun neun zwei München", true)).toEqual("Das ist die 80992 München");
+      })
+  
+      describe('should return whole adress', () => {[
+        ["Poststraße fünf, eins zwei drei vier fünf München", "Poststraße 5, 12345 München"],
+        ["Poststraße zwanzig, achtzig zwo dreißig München", "Poststraße 20, 80230 München"],
+        ["Poststraße einhundertzehn, achtzig dreissig fünf München", "Poststraße 110, 80305 München"],
+        ["Dachauer str. achtzehn in acht null neun neun zwei München", "Dachauer str. 18 in 80992 München"],
+        ["Dachauer str. einhundertundeins in acht null drei drei acht", "Dachauer str. 101 in 80338"],
+        ["In der Nymphenburger Straße achtzehn.", "In der Nymphenburger Straße 18."]].forEach(([text,res]) => {
+          it(`should return ${res} when ${text} is passed`, () => {
+            expect(wordToNumber(text, true)).toEqual(res);
+          });
         });
-      });
+      })
     })
-  })
-
-  describe("tax id string", () => {
-    it('should return single digits as tax id', () => {
-      expect(wordToNumber("eins zwei drei vier fünf sechs sieben acht neun eins zwei")).toEqual("12345678912");
-    })
-
-    it('should return multi numbers as tax id', () => {
-      expect(wordToNumber("fünf dreiundzwanzig vier fünf sechsundsechzig acht neun eins eins")).toEqual("52345668911");
-    })
-
-    it('should return multi numbers as tax id and preserve other text', () => {
-      expect(wordToNumber("Das ist die einhundertfünfundfünfzig dreihundertundeins dreihundertzweiunddreißig zwölf")).toEqual("Das ist die 15530133212");
+  
+    describe("tax id string", () => {
+      it('should return single digits as tax id', () => {
+        expect(wordToNumber("eins zwei drei vier fünf sechs sieben acht neun eins zwei", true)).toEqual("12345678912");
+      })
+  
+      it('should return multi numbers as tax id', () => {
+        expect(wordToNumber("fünf dreiundzwanzig vier fünf sechsundsechzig acht neun eins eins", true)).toEqual("52345668911");
+      })
+  
+      it('should return multi numbers as tax id and preserve other text', () => {
+        expect(wordToNumber("Das ist die einhundertfünfundfünfzig dreihundertundeins dreihundertzweiunddreißig zwölf", true)).toEqual("Das ist die 15530133212");
+      })
     })
   })
 });
