@@ -1,7 +1,11 @@
 {
-  "name": "word-to-number",
+  "name": "@IBM/wort-to-number",
   "version": "1.0.0",
-  "description": "",
+  "description": "Transforms numbers written as words (in German language) into numbers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBM/wort-to-number.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest",
