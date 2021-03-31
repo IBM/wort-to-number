@@ -2,7 +2,7 @@ const numberDictionary = {
   null: "0",
   eins: "1",
   zwei: "2",
-  zwo:  "2",
+  zwo: "2",
   drei: "3",
   vier: "4",
   fünf: "5",
@@ -111,7 +111,7 @@ module.exports = (str, smart = false) => {
   }
 
   let a = [str];
-  
+
   [" ", ",", "."].forEach(separator => {
     a = flatMap(
       a.map(e => {
@@ -122,23 +122,23 @@ module.exports = (str, smart = false) => {
 
   const paragraph = a.map(mapWordToNumber).join("");
 
-  if(smart){
+  if (smart) {
     // check for tax id
     let regex = /(\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d)/g;
     let found = paragraph.match(regex);
 
-    if(found && found[0]){
-      return paragraph.replace(found[0], found[0].replace(/\s/g,''));
+    if (found && found[0]) {
+      return paragraph.replace(found[0], found[0].replace(/\s/g, ''));
     }
 
     //check for zip codes
     regex = /(\d\s?\d\s?\d\s?\d\s?\d)\s\D|(\d\s?\d\s?\d\s?\d\s?\d$)/;
     found = paragraph.match(regex);
 
-    if(found && found[1]){
-      return paragraph.replace(found[1], found[1].replace(/\s/g,''));
-    } else if (found && found[2]){
-      return paragraph.replace(found[2], found[2].replace(/\s/g,''));
+    if (found && found[1]) {
+      return paragraph.replace(found[1], found[1].replace(/\s/g, ''));
+    } else if (found && found[2]) {
+      return paragraph.replace(found[2], found[2].replace(/\s/g, ''));
     }
   }
 
