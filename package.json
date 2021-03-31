@@ -1,5 +1,5 @@
 {
-  "name": "@IBM/wort-to-number",
+  "name": "@ibm/wort-to-number",
   "version": "1.0.0",
   "description": "Transforms numbers written as words (in German language) into numbers",
   "repository": {
