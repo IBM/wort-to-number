@@ -183,7 +183,7 @@ describe("Word to Number", () => {
   
       describe('should return whole adress', () => {[
         ["Poststraße fünf, eins zwei drei vier fünf München", "Poststraße 5, 12345 München"],
-        ["Poststraße zwanzig, achtzig zwo dreißig München", "Poststraße 20, 80230 München"],
+        ["Poststraße zwanzig achtzig zwo dreißig München", "Poststraße 20 80230 München"],
         ["Poststraße einhundertzehn, achtzig dreissig fünf München", "Poststraße 110, 80305 München"],
         ["Dachauer str. achtzehn in acht null neun neun zwei München", "Dachauer str. 18 in 80992 München"],
         ["Dachauer str. einhundertundeins in acht null drei drei acht", "Dachauer str. 101 in 80338"],
