@@ -169,6 +169,10 @@ describe("Word to Number", () => {
         expect(wordToNumber("acht null neun neun zwei", true)).toEqual("80992");
       })
 
+      it('should return standalone postal code with single digits and trailing space, without white spaces', () => {
+        expect(wordToNumber("acht null neun neun zwei ", true)).toEqual("80992");
+      })
+
       it('should return standalone postal code with multi-digits, without white spaces', () => {
         expect(wordToNumber("achtzig neunundneunzig zwei", true)).toEqual("80992");
       })

@@ -132,7 +132,7 @@ module.exports = (str, smart = false) => {
     }
 
     //check for zip codes
-    regex = /(\d\s?\d\s?\d\s?\d\s?\d)\s\D|(\d\s?\d\s?\d\s?\d\s?\d$)/;
+    regex = /(\d\s?\d\s?\d\s?\d\s?\d)\s\D|(\d\s?\d\s?\d\s?\d\s?\d?\s?$)/;
     found = paragraph.match(regex);
 
     if (found && found[1]) {
